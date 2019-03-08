@@ -26,16 +26,31 @@ public class MainActivity extends AppCompatActivity {
         liste.add("Fenerbahçe");
         liste.add("Galatasaray");
         liste.add("Beşiktaş");
+
+        final ArrayList<Kisiler> liste2= new ArrayList<>();
+        liste2.add( new Kisiler("Ahmet","Boncuk"));
+        liste2.add( new Kisiler("Mustafa","Gölet"));
+        liste2.add( new Kisiler("Sönmez","Çimen"));
+        liste2.add( new Kisiler("Tevfik","Aksu"));
+
+
+
         ArrayAdapter<String> adap= new ArrayAdapter<String>(getApplicationContext(),
                  android.R.layout.simple_list_item_1,liste);
 
-        lv.setAdapter(adap);
+        ArrayAdapter<Kisiler> adap2= new ArrayAdapter<Kisiler>(
+                getApplicationContext(),android.R.layout.simple_list_item_1, liste2);
+
+
+        //lv.setAdapter(adap);
+
+        lv.setAdapter(adap2);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Log.i("Tıklanan:",liste.get(i));
+                Log.i("Tıklanan:",((Kisiler)liste2.get(i)).toString());
             }
         });
     }
